@@ -22,4 +22,5 @@ This project is licensed under the MIT License.
 
 ## Acknowledgments
 
+* Hat tip: Daniel Bachhuber
 * Inspired by: Jacob Schwartz, emfluence Digital Marketing
