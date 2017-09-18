@@ -6,6 +6,9 @@ Media Content Taxonomy Filter.
 
 Creates a custom taxonomy for attachments. Allows to attach multiple categories of this type with uploaded media. Adds a dropdown for quick filtration in media library by taxonomy term.
 
+### Plugin URL
+https://wordpress.org/plugins/media-content-taxonomy/
+
 ### Installing
 
 Use automatic installer.
