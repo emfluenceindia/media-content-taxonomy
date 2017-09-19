@@ -17,7 +17,7 @@ class Media_Content_Taxonomy {
 
     function __construct()
     {
-        add_action( 'init', array( $this, 'init' ) );
+        add_action( 'admin_init', array( $this, 'init' ) );
     }
 
     function Media_Content_Taxonomy() {
@@ -27,6 +27,7 @@ class Media_Content_Taxonomy {
     /* Call function(s) when plugin initializes */
     function init() {
         $this->enqueue();
+        $this->stylize();
     }
 
     function enqueue() {
@@ -35,13 +36,16 @@ class Media_Content_Taxonomy {
 
         /*
          * Creates a third dropdown for Media Content Category filter options.
-         * media_content_category = ID of the taxonomy used at the time of registration
+         * media_content_category is the ID of the taxonomy used at the time of registration
         */
 
         wp_localize_script( 'media-library-taxonomy-filter', 'MediaLibraryTaxonomyFilterOptions', array(
             'terms'     => get_terms(
                 'media_content_category', array( 'hide_empty' => false ) ),
         ) );
+    }
+
+    function stylize() {
         add_action( 'admin_footer', function(){
             ?>
             <style>
