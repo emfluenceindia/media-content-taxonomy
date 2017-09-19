@@ -7,12 +7,6 @@
  * Gets tied with attachments
  */
 
-add_action( 'init' , 'mctf_create_media_content_taxonomy' );
-
-function mctf_create_media_content_taxonomy() {
-    register_taxonomy_for_object_type( 'media_content_category', 'attachment' );
-}
-
 add_action('init', 'mctf_media_content_taxonomy', 0);
 
 /* Creating Custom Taxonomy */
