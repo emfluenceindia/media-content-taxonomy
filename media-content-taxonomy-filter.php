@@ -7,16 +7,11 @@
  * Version: 0.0.1
  */
 
-/*
- * File name: media-content-taxonomy-register.php
- * Purpose: Creates and registers custom taxonomy "media_content_category"
- */
-require_once('media-content-taxonomy-register.php');
-
 class Media_Content_Taxonomy {
 
     function __construct()
     {
+        add_action( 'init', array( $this, 'mctf_register_media_content_taxonomy'), 0);
         add_action( 'admin_init', array( $this, 'init' ) );
     }
 
@@ -28,6 +23,10 @@ class Media_Content_Taxonomy {
     function init() {
         $this->enqueue();
         $this->stylize();
+    }
+
+    function mctf_register_media_content_taxonomy() {
+        $this->mctf_media_content_taxonomy();
     }
 
     function enqueue() {
@@ -56,6 +55,33 @@ class Media_Content_Taxonomy {
             </style>
             <?php
         });
+    }
+
+    /* Create and Register taxonomy media_content_category */
+    function mctf_media_content_taxonomy() {
+        $labels = array (
+            'name'              => __('Media Content Categories'),
+            'singular_name'     => __('Media Content Category'),
+            'search_items'      => __('Search Media Content Categories'),
+            'all_items'         => __('All Media Content Categories'),
+            'parent_item'       => __('Parent Media Content Category'),
+            'parent_item_colon' => __('Parent Media Content Category:'),
+            'edit_item'         => __('Edit Media Content Category'),
+            'update_item'       => __('Update Media Content Category'),
+            'add_new_item'      => __('Add New Media Content Category'),
+            'new_item_name'     => __('New Media Content Category Name'),
+            'menu_name'         => __('Content Category')
+        );
+
+        /* Registering taxonomy for "attachment" */
+        register_taxonomy('media_content_category', array('attachment'), array (
+            'labels'            => $labels,
+            'hierarchical'      => true,
+            'show_ui'           => true,
+            'show_admin_column' => true,
+            'query_var'         => true,
+            'rewrite'           => array('slug', 'content_category')
+        ));
     }
 }
 
