@@ -14,11 +14,9 @@
 require_once('media-content-taxonomy-register.php');
 
 class Media_Content_Taxonomy {
+
     function __construct()
     {
-        if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-            add_action( 'admin_init', array( $this, 'init_ajax' ) );
-        }
         add_action( 'init', array( $this, 'init' ) );
     }
 
