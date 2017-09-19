@@ -15,3 +15,7 @@ Initial Release
 
 == Installation ==
 Use automatic installer.
+
+== Contribution ==
+Everybody is welcome to contribute to this plugin. You can do so by either opening an issue that you might have encountered or by making it more feature rich.
+Please visit <a href="https://github.com/emfluenceindia/media-content-taxonomy" target="_blank">Media Content Taxonomy on Github</a>
