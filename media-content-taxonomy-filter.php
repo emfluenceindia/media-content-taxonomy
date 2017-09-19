@@ -4,7 +4,7 @@
  * Description: Creates a custom taxonomy and a User Interface in admin for adding terms to it. Creates an additional filter dropdown in Media Library screen.
  * Author: Subrata Sarkar
  * Author URI: http://subratasarkar.com
- * Version: 0.0.1
+ * Version: 0.0.2
  */
 
 class Media_Content_Taxonomy {
