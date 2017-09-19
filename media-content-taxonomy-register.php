@@ -12,26 +12,26 @@ add_action('init', 'mctf_media_content_taxonomy', 0);
 /* Creating Custom Taxonomy */
 function mctf_media_content_taxonomy() {
     $labels = array (
-        'name' => _x('Media Content Categories', 'Media Content Categories'),
-        'singular_name' => _x('Media Content Category', 'Media Content Category'),
-        'search_items' => __('Search Media Content Categories'),
-        'all_items' => __('All Media Content Categories'),
-        'parent_item' => __('Parent Media Content Category'),
+        'name'              => __('Media Content Categories'),
+        'singular_name'     => __('Media Content Category'),
+        'search_items'      => __('Search Media Content Categories'),
+        'all_items'         => __('All Media Content Categories'),
+        'parent_item'       => __('Parent Media Content Category'),
         'parent_item_colon' => __('Parent Media Content Category:'),
-        'edit_item' => __('Edit Media Content Category'),
-        'update_item' => __('Update Media Content Category'),
-        'add_new_item' => __('Add New Media Content Category'),
-        'new_item_name' => __('New Media Content Category Name'),
-        'menu_name' => __('Content Category')
+        'edit_item'         => __('Edit Media Content Category'),
+        'update_item'       => __('Update Media Content Category'),
+        'add_new_item'      => __('Add New Media Content Category'),
+        'new_item_name'     => __('New Media Content Category Name'),
+        'menu_name'         => __('Content Category')
     );
 
     /* Registering taxonomy for "attachment" */
     register_taxonomy('media_content_category', array('attachment'), array (
-        'hierarchical' => true,
-        'labels' => $labels,
-        'show_ui' => true,
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
         'show_admin_column' => true,
-        'query_var' => true,
-        'rewrite' => array('slug', 'content_category')
+        'query_var'         => true,
+        'rewrite'           => array('slug', 'content_category')
     ));
 }
