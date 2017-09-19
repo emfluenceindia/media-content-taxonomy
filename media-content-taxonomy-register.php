@@ -7,16 +7,16 @@
  * Gets tied with attachments
  */
 
-add_action( 'init' , 'emfl_create_media_content_taxonomy' );
+add_action( 'init' , 'mctf_create_media_content_taxonomy' );
 
-function emfl_create_media_content_taxonomy() {
+function mctf_create_media_content_taxonomy() {
     register_taxonomy_for_object_type( 'media_content_category', 'attachment' );
 }
 
-add_action('init', 'emfl_media_content_taxonomy', 0);
+add_action('init', 'mctf_media_content_taxonomy', 0);
 
 /* Creating Custom Taxonomy */
-function emfl_media_content_taxonomy() {
+function mctf_media_content_taxonomy() {
     $labels = array (
         'name' => _x('Media Content Categories', 'Media Content Categories'),
         'singular_name' => _x('Media Content Category', 'Media Content Category'),
