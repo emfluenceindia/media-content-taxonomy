@@ -12,16 +12,16 @@
                 filters[ index ] = {
                     text: value.name,
                     props: {
-                        // Change this: key needs to be the WP_Query var for the taxonomy
+                        // The WP_Query var for the taxonomy
                         media_content_category: value.slug,
                     }
                 };
             });
             filters.all = {
-                // Change this: use whatever default label you'd like
+                // Default label
                 text:  'All categories',
                 props: {
-                    // Change this: key needs to be the WP_Query var for the taxonomy
+                    // The WP_Query var for the taxonomy
                     media_content_category: ''
                 },
                 priority: 10
