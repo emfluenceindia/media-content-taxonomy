@@ -10,8 +10,10 @@ Creates a custom taxonomy for media content types to associate with all uploaded
 
 == Upgrade Notice ==
 
-= 0.0.1 =
-Initial Release
+
+== Initial Release ==
+Version: 0.0.1
+
 
 == Installation ==
 Use automatic installer.
