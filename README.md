@@ -2,6 +2,19 @@
 
 Media Content Taxonomy Filter.
 
+## Initial version:
+
+0.0.1
+
+## Current Version:
+
+0.0.2
+
+## Changelog
+
+- Procedural approach for registering taxonomy is now made object oriented
+- More lightweight.
+
 ## What it does
 
 Creates a custom taxonomy for attachments. Allows to attach multiple categories of this type with uploaded media. Adds a dropdown for quick filtration in media library by taxonomy term.
