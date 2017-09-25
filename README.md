@@ -8,16 +8,21 @@ Media Content Taxonomy Filter.
 
 ## Current Version:
 
-0.0.2
+0.0.3
 
 ## Changelog
 
-- Procedural approach for registering taxonomy is now made object oriented
-- More lightweight.
+Version 0.0.2
+1. Procedural approach for registering taxonomy is now made object oriented
+2. More lightweight.
 
-## What it does
+Version 0.0.3
+1. Filter dropdown is now available in Media page List View
 
-Creates a custom taxonomy for attachments. Allows to attach multiple categories of this type with uploaded media. Adds a dropdown for quick filtration in media library by taxonomy term.
+
+## Description
+
+Creates a custom taxonomy for attachments. Allows to attach multiple categories of this type with uploaded media. Adds a filter dropdown for quick filtration in media library by taxonomy term.
 
 ### Plugin URL
 https://wordpress.org/plugins/media-content-taxonomy/
