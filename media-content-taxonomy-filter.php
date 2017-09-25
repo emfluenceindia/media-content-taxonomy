@@ -24,7 +24,8 @@ class Media_Content_Taxonomy {
 
     /* Call function(s) when plugin initializes */
     function init() {
-        $this->enqueue();
+        $this->enqueue_script();
+        $this->localize_script();
         $this->stylize();
     }
 
@@ -43,14 +44,16 @@ class Media_Content_Taxonomy {
         $this->mctf_media_content_filter($wp_query);
     }
 
-    function enqueue() {
+    function enqueue_script() {
         // Load 'terms' from our custom taxonomy into a JavaScript variable that media-taxonomy-filter.js has access to
         wp_enqueue_script('media-library-taxonomy-filter', plugins_url( "js/media-taxonomy-filter.js", __FILE__ ), array( 'media-editor', 'media-views' ), '20170906', true );
+    }
 
+    function localize_script() {
         /*
-         * Creates a third dropdown for Media Content Category filter options.
-         * media_content_category is the ID of the taxonomy used at the time of registration
-        */
+                 * Creates a third dropdown for Media Content Category filter options.
+                 * media_content_category is the ID of the taxonomy used at the time of registration
+                */
 
         wp_localize_script( 'media-library-taxonomy-filter', 'MediaLibraryTaxonomyFilterOptions', array(
             'terms'     => get_terms(
