@@ -13,6 +13,9 @@ class Media_Content_Taxonomy {
     {
         add_action( 'init', array( $this, 'mctf_register_media_content_taxonomy'), 0);
         add_action( 'admin_init', array( $this, 'init' ) );
+
+        add_action('restrict_manage_posts', array( $this,  'mctf_media_list_view_filter_add' ), 0);
+        add_action('pre_get_posts', array( $this, 'mctf_media_list_view_filter_action' ), 0);
     }
 
     function Media_Content_Taxonomy() {
@@ -27,6 +30,17 @@ class Media_Content_Taxonomy {
 
     function mctf_register_media_content_taxonomy() {
         $this->mctf_media_content_taxonomy();
+    }
+
+    /* Adds Media Content Taxonomy filter dropdown in listview */
+    function mctf_media_list_view_filter_add() {
+        $this->mctf_add_content_category_filter_dropdown();
+    }
+
+    /* Filter Action */
+    function mctf_media_list_view_filter_action() {
+        global $wp_query;
+        $this->mctf_media_content_filter($wp_query);
     }
 
     function enqueue() {
@@ -82,6 +96,45 @@ class Media_Content_Taxonomy {
             'query_var'         => true,
             'rewrite'           => array('slug', 'content_category')
         ));
+    }
+
+    function mctf_add_content_category_filter_dropdown()
+    {
+        $scr = get_current_screen();
+        if ( $scr->base !== 'upload' ) {
+            return;
+        }
+
+        $terms = get_terms('media_content_category', array('hide_empty' => false));
+
+        if( !empty( $terms ) && ! is_wp_error( $terms ) ) {
+            printf( '<select name="%1$s" class="postform">', esc_attr('mcfdd') );
+            print( '<option value="">All Categories</option>' );
+            foreach( $terms as $term ) {
+                printf( '<option value="%1$s" %2$s>%3$s</option>', esc_attr( $term->term_id ), selected( intval( $_GET['mcfdd'] ), $term->term_id ), esc_html( $term->name ) );
+            }
+            print( '</select>' );
+        }
+    }
+
+    function mctf_media_content_filter($query) {
+        if( !is_admin() ) { // Only admin can access this
+            return;
+        }
+
+        if( $query->is_main_query() ) { // Only main queries
+            //Attachment query
+            if('attachment' == $query->get('post_type') ) {
+                //Attachment Tax Query
+                if( isset( $_GET, $_GET['mcfdd'] ) && !empty( $_GET['mcfdd'] ) ) {
+                    $query->set( 'tax_query', array( array (
+                        'taxonomy' => 'media_content_category',
+                        'filed' => 'term_id',
+                        'terms' => array( intval( $_GET['mcfdd'] ) )
+                    )  ) );
+                }
+            }
+        }
     }
 }
 
